@@ -1,0 +1,27 @@
+.registrationForm {
+  max-width: 400px;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+}
+
+.registrationForm__form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.registrationForm__form_lastName,
+.registrationForm__form_firstName,
+.registrationForm__form_phone,
+.registrationForm__form_email,
+.registrationForm__form_password {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 5px;
+}
