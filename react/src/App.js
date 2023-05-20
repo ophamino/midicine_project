@@ -3,6 +3,7 @@ import AuthForm from './components/AuthForm/AuthForm';
 import RegistrationForm from './components/RegistrationForm/RegistrationForm';
 import Auth from './page/Auth';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Main from './page/Main';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
               <Route path="/auth" element={<Auth />} />
               <Route path="/auth/login" element={<AuthForm />} />
               <Route path="/auth/reg" element={<RegistrationForm />} />
+              <Route path="/main" element={<Main />} />
             </Routes>
           </div>
         </div>
