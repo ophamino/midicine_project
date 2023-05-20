@@ -7,7 +7,7 @@ import { URL_API_REG } from '../../urls';
 const RegistrationForm = () => {
   const [firstName, setFirstName] = React.useState('');
   const [lastName, setLastName] = React.useState('');
-  const [phone, setPhone] = React.useState(0);
+  const [phone, setPhone] = React.useState();
   const [email, setEmail] = React.useState('');
   const [emailDirty, setEmailDirty] = React.useState(false);
   const [emailError, setEmailError] = React.useState(
@@ -33,7 +33,7 @@ const RegistrationForm = () => {
   React.useEffect(() => {
     if (status) {
       const timeoutId = setTimeout(() => {
-        navigate('/Main', { replace: true });
+        navigate('/', { replace: true });
       }, 2000);
 
       return () => clearTimeout(timeoutId);
@@ -115,30 +115,41 @@ const RegistrationForm = () => {
         onSubmit={handleCreateUser}
       >
         <div className={style.registrationForm__form_firstName}>
-          <label htmlFor="firstName">Имя: </label>
+          <p className={style.registrationForm__form_firstName_placeholder}>
+            Имя
+          </p>
+
           <input
             type="text"
             name="firstName"
+            placeholder="Магомед"
             value={firstName}
             onChange={(event) => setFirstName(event.target.value)}
           />
         </div>
 
         <div className={style.registrationForm__form_lastName}>
-          <label htmlFor="lastName">Фамилия: </label>
+          <p className={style.registrationForm__form_lastName_placeholder}>
+            Фамилия
+          </p>
+
           <input
             type="text"
             name="lastName"
+            placeholder="Магомедов"
             value={lastName}
             onChange={(event) => setLastName(event.target.value)}
           />
         </div>
 
         <div className={style.registrationForm__form_phone}>
-          <label htmlFor="phone">Телефон:</label>
+          <p className={style.registrationForm__form_phone_placeholder}>
+            Телефон
+          </p>
           <input
             type="tel"
             name="phone"
+            placeholder="+7(000)-000-00-00"
             value={phone}
             onChange={(event) => setPhone(parseInt(event.target.value))}
           />
@@ -150,10 +161,13 @@ const RegistrationForm = () => {
           </div>
         )}
         <div className={style.registrationForm__form_email}>
-          <label htmlFor="email">Email: </label>
+          <p className={style.registrationForm__form_email_placeholder}>
+            Email
+          </p>
           <input
             type="email"
             name="email"
+            placeholder="test@gmail.com"
             value={email}
             onChange={(event) => handleEmail(event)}
             onBlur={(e) => handleBlur(e)}
@@ -165,10 +179,13 @@ const RegistrationForm = () => {
           </div>
         )}
         <div className={style.registrationForm__form_password}>
-          <label htmlFor="password">Пароль:</label>
+          <p className={style.registrationForm__form_password_placeholder}>
+            Password
+          </p>
           <input
             type="password"
             name="password"
+            placeholder="password"
             value={password}
             onChange={(event) => handlePassword(event)}
             onBlur={(e) => handleBlur(e)}
@@ -180,7 +197,7 @@ const RegistrationForm = () => {
           type="sumbit"
           disabled={!formValid}
         >
-          Регистрация
+          Зарегистрироваться
         </button>
         {status && (
           <p className={style.registrationForm__form_status}>
@@ -188,7 +205,6 @@ const RegistrationForm = () => {
           </p>
         )}
       </form>
-      <Link to="/auth/login">Вход</Link>
     </div>
   );
 };

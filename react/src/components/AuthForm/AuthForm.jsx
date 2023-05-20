@@ -1,8 +1,10 @@
 import React from 'react';
 import style from './AuthForm.module.css';
-import { Link } from 'react-router-dom';
-import { URL_API_REG } from '../../urls';
+import { Link, useNavigate } from 'react-router-dom';
+import { URL_API_LOGIN } from '../../urls';
 import axios from 'axios';
+import loginIcon from '../../assets/icon/login.svg';
+import passwordIcon from '../../assets/icon/password.svg';
 
 const AuthForm = () => {
   const [email, setEmail] = React.useState('');
@@ -12,21 +14,47 @@ const AuthForm = () => {
   );
   const [password, setPassword] = React.useState('');
 
+  const [token, setToken] = React.useState('');
+  const [status, setStatus] = React.useState(false);
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (status) {
+      const timeoutId = setTimeout(() => {
+        navigate('/', { replace: true });
+      }, 2000);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [status]);
+
   const authUser = async () => {
     try {
-      // const body = {
-      //   email: email,
-      //   password: password,
-      // };
-      // const response = await axios
-      //   .post(URL_API_REG, body)
-      //   .then((data) => {
-      //     console.log(data);
-      //   })
-      //   .catch((data) => console.log(data));
-      console.log(email);
-      console.log(password);
-    } catch (error) {}
+      const body = {
+        email: email,
+        password: password,
+      };
+      const response = await axios
+        .post(URL_API_LOGIN, body, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+        .then((data) => {
+          console.log(data);
+          sessionStorage.setItem('token', JSON.stringify(data.data.auth_token));
+
+          if (data.status == 200) {
+            setStatus(true);
+          }
+        });
+
+      // Сохранение токена в состоянии
+
+      console.log('Вход выполнен, получен токен:');
+    } catch (error) {
+      console.error('Ошибка входа:', error);
+    }
   };
 
   const handleEmail = (e) => {
@@ -57,36 +85,52 @@ const AuthForm = () => {
     <div className={style.authForm}>
       <form className={style.authForm__form} onSubmit={handleCreateUser}>
         {emailDirty && emailError && (
-          <div className={style.registrationForm__form_email_error}>
-            {emailError}
-          </div>
+          <div className={style.authForm__form_email_error}>{emailError}</div>
         )}
         <div className={style.authForm__form_email}>
-          <label htmlFor="email">Email: </label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={(event) => handleEmail(event)}
-            onBlur={(e) => handleBlur(e)}
-          />
+          <p className={style.authForm__form_email_placeholder}>Email</p>
+          <div className={style.input_icon_email}>
+            <input
+              type="email"
+              name="email"
+              placeholder="test@gmail.com"
+              value={email}
+              onChange={(event) => handleEmail(event)}
+              onBlur={(e) => handleBlur(e)}
+            />
+
+            <img src={loginIcon} alt="loginIcon" />
+          </div>
         </div>
 
         <div className={style.authForm__form_password}>
-          <label htmlFor="password">Пароль:</label>
-          <input
-            type="passwordw"
-            name="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
+          <p className={style.authForm__form_password_placeholder}>Пароль</p>
+          <div className={style.input_icon_password}>
+            <input
+              type="password"
+              name="password"
+              placeholder="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+            <img src={passwordIcon} alt="passwordIcon" />
+          </div>
         </div>
 
         <button className={style.authForm__form_btn} type="submit">
-          Вход
+          Войти
         </button>
+        <hr />
+
+        <Link to="/auth" className={style.forgot_your_password}>
+          Забыли пароль?
+        </Link>
+        {status && (
+          <p className={style.registrationForm__form_status}>
+            Авторизация прошла успешно
+          </p>
+        )}
       </form>
-      <Link to="/auth/reg">Зарегистрироваться</Link>
     </div>
   );
 };

@@ -1,0 +1,42 @@
+.testScreen {
+  padding: 54px 0 48px 0;
+  margin: 0 106px 234px 145px;
+  display: flex;
+}
+
+.testScreen__info {
+  max-width: 700px;
+}
+
+.testScreen__info_header {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 80px;
+  color: #000000;
+  margin-bottom: 37px;
+}
+.testScreen__info_subtitle {
+  max-width: 453px;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #8f95a5;
+  margin-bottom: 93px;
+}
+
+.testScreen__info_cout_test {
+  text-align: center;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 80px;
+  color: #2a3246;
+}
+
+.testScreen__info_cout_test_subtitle {
+  text-align: center;
+
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  color: #8f95a5;
+}

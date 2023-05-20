@@ -1,0 +1,47 @@
+.aboutUs {
+  padding: 54px 0 165px 0;
+  margin: 0 106px 124px 145px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.aboutUs__info {
+  max-width: 700px;
+}
+
+.aboutUs__info_header {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 80px;
+  color: #000000;
+  margin-bottom: 37px;
+}
+.aboutUs__info_subtitle {
+  max-width: 453px;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #8f95a5;
+  margin-bottom: 93px;
+}
+
+.aboutUs__info_subtitle_bold {
+  color: #000000;
+}
+
+.aboutUs__info_cout_test {
+  text-align: center;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 80px;
+  color: #2a3246;
+}
+
+.aboutUs__info_cout_test_subtitle {
+  text-align: center;
+
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  color: #8f95a5;
+}

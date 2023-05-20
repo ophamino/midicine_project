@@ -1,0 +1,45 @@
+.headers {
+  margin: 61px 69px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headers__nav {
+  display: flex;
+  column-gap: 54px;
+}
+
+.nav__list {
+  display: flex;
+  column-gap: 54px;
+}
+.nav__list_item_link {
+  font-size: 24px;
+  color: #000;
+  font-weight: 500;
+}
+
+.auth_btn,
+.auth_btn_auth {
+  display: flex;
+  width: 220px;
+  height: 60px;
+  border-radius: 30px;
+  background-color: transparent;
+  border: 3px solid #000;
+  font-size: 24px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  transition: 0.5s;
+}
+
+.auth_btn:hover,
+.auth_btn_auth:hover {
+  background-color: #000;
+  color: #fff;
+}

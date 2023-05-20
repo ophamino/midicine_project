@@ -1,0 +1,57 @@
+.firstScreen {
+  display: flex;
+  justify-content: space-between;
+  margin: 89px 106px 142px 145px;
+}
+
+.firstScreen__callToAction {
+  max-width: 625px;
+}
+
+.firstScreen__callToAction_HL {
+  display: flex;
+  align-items: center;
+  column-gap: 62px;
+}
+
+.firstScreen__callToAction_header {
+  max-width: 445px;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 80px;
+  margin-bottom: 37px;
+}
+
+.firstScreen__callToAction_light {
+  width: 84.66px;
+  height: 84.87px;
+  margin-bottom: 40px;
+}
+
+.firstScreen__callToAction_subtitle {
+  max-width: 466px;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #8f95a5;
+  margin-bottom: 48px;
+}
+
+.firstScreen__callToAction_letsStart {
+  width: 382px;
+  height: 96px;
+  background: transparent;
+  border-radius: 37px;
+  color: #85adff;
+  border: 3px solid #85adff;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 41px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.firstScreen__callToAction_letsStart:hover {
+  background: #85adff;
+  color: #ffffff;
+}
