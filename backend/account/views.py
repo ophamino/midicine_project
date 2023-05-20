@@ -19,14 +19,14 @@ class UserProfileChangeAPIView(generics.RetrieveAPIView,
                                mixins.DestroyModelMixin,
                                mixins.UpdateModelMixin):
     permission_classes = (
-        permissions.IsAuthenticated,
-        UserIsOwnerOrReadOnly,
+        #permissions.IsAuthenticated,
+        #UserIsOwnerOrReadOnly,
     )
     serializer_class = UserProfileChangeSerializer
 
     def get_object(self):
-        user_id = self.kwargs["id"]
-        obj = get_object_or_404(User, id=user_id)
+        user_pk = self.kwargs["pk"]
+        obj = get_object_or_404(User, pk=user_pk)
         return obj
 
     def delete(self, request, *args, **kwargs):
