@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 
 class CustomUserManager(BaseUserManager):
     """Manager for custom user"""
+
     def create_user(self, email, first_name, last_name, phone, password):
         """Function for create simple user"""
         if not email:
@@ -49,6 +50,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=25, verbose_name="Lastname")
     email = models.EmailField(unique=True, verbose_name="Email address")
     phone = models.CharField(max_length=14, verbose_name="Phone number")
+    position = models.CharField(max_length=100, null=True, blank=True)
+    departament = models.CharField(max_length=100, null=True, blank=True)
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
