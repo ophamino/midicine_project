@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './RegistrationForm.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { URL_API_REG } from '../../urls';
 
@@ -18,8 +18,9 @@ const RegistrationForm = () => {
   const [passwordError, setPasswordError] = React.useState(
     'Пароль не может быть пустым'
   );
-
   const [formValid, setFormValid] = React.useState(false);
+  const [status, setStatus] = React.useState(false);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     if (emailError || passwordError) {
@@ -29,23 +30,33 @@ const RegistrationForm = () => {
     }
   }, [emailError, passwordError]);
 
+  React.useEffect(() => {
+    if (status) {
+      const timeoutId = setTimeout(() => {
+        navigate('/Main', { replace: true });
+      }, 2000);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [status]);
+
   const createUser = async () => {
     try {
       const body = {
-        // first_name: firstName,
-        // last_name: lastName,
-        // phone: phone,
-        // email: email,
-        // password: password,
-
-        first_name: 'gfjd',
-        last_name: 'jfkd',
-        phone: +7149848941,
-        email: 'an2@gmail.com',
-        password: 'Daniyalou2002',
+        first_name: firstName,
+        last_name: lastName,
+        phone: phone,
+        email: email,
+        password: password,
       };
       const response = await axios
         .post(URL_API_REG, body)
+        .then((data) => {
+          console.log(data);
+          if (data.status == 201) {
+            setStatus(true);
+          }
+        })
         .catch((data) => console.log(data));
     } catch (error) {}
   };
@@ -171,6 +182,11 @@ const RegistrationForm = () => {
         >
           Регистрация
         </button>
+        {status && (
+          <p className={style.registrationForm__form_status}>
+            Регистрация прошла успешно
+          </p>
+        )}
       </form>
       <Link to="/auth/login">Вход</Link>
     </div>
