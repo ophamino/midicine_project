@@ -6,7 +6,7 @@ authors = ["Alisultanoc Dzhamaludin <alisultanovdzh@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.9"
 django = "^4.2.1"
 djangorestframework = "^3.14.0"
 djangorestframework-simplejwt = "^5.2.2"
