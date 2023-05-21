@@ -1,9 +1,9 @@
 from django.urls import path
+from .views import QuestionListAPIView, AnswerListAPIView, ExamListAPIView
 
-from .views import QuizAPIView, QuizListAPIView,  QuizCreateAPIView
 
 urlpatterns = [
-    path('', QuizListAPIView.as_view()),
-    path('<int:pk>/',QuizAPIView.as_view()),
-    path('new/', QuizCreateAPIView.as_view()),
+    path('<int:pk>/', ExamListAPIView.as_view({'get': 'list'})),
+    path('question/<int:pk>/', QuestionListAPIView.as_view({'get': 'list'})),
+    path('answer/<int:pk>/', AnswerListAPIView.as_view({'get': 'list'})),
 ]

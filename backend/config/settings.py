@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'drf_yasg',
 
     'account.apps.AccountConfig',
+    'article.apps.ArticleConfig',
     'quiz.apps.QuizConfig',
 ]
 
