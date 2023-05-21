@@ -10,10 +10,16 @@ class Exam(models.Model):
     author = models.ForeignKey(User, models.CASCADE)
     published = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.title
+
 
 class Question(models.Model):
     title = models.CharField(max_length=255)
     exam = models.ForeignKey(Exam, models.CASCADE)
+
+    def __str__(self):
+        return self.title
 
 
 class Answer(models.Model):\
@@ -25,3 +31,6 @@ class Answer(models.Model):\
     title = models.CharField(max_length=255)
     question = models.ForeignKey(Question, models.CASCADE)
     status = models.CharField(max_length=1, choices=Status.choices, default=Status.FALSE)
+
+    def __str__(self):
+        return self.title

@@ -6,7 +6,7 @@ from .models import Exam, Answer, Question
 class ExamListAPIViewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Exam
-        fields = ['title', 'discription', 'author']
+        fields = ['id', 'title', 'discription', 'author']
 
 
 class QuestionListAPIViewSerializer(serializers.Serializer):
