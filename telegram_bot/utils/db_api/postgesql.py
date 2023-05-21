@@ -50,7 +50,7 @@ class Database:
 
     async def create_table_duel(self):
         sql = """
-                CREATE TABLE IF NOT EXISTS USERS(
+                CREATE TABLE IF NOT EXISTS DUEL(
                     user1 INT,
                     user2 INT,
                     quantity_answers_user1 INT,
@@ -72,7 +72,7 @@ class Database:
         sql = "INSERT INTO users (id, id_website) VALUES($1, $2) returning *"
         return await self.execute(sql, id, id_website, fetchrow=True)
 
-    async def add_duel(self, user1, user2, quantity_answers_user1, quantity_answers_user2, id_quizy):  # добавляем пользователя
+    async def add_duel(self, id_quizy, user1, user2=None, quantity_answers_user1=None, quantity_answers_user2=None):  # добавляем пользователя
         sql = "INSERT INTO duel (user1, user2, quantity_answers_user1, quantity_answers_user2, id_quizy) VALUES($1, $2, $3, $4, $5) returning *"
         return await self.execute(sql, user1, user2, quantity_answers_user1, quantity_answers_user2, id_quizy, fetchrow=True)
 
@@ -81,10 +81,22 @@ class Database:
         return await self.execute(sql, fetch=True)
 
     async def select_all_duel(self):  # все юзеры
-        sql = "SELECT * FROM duel"
+        sql = "SELECT * FROM Duel"
         return await self.execute(sql, fetch=True)
 
     async def select_user(self, **kwargs):  # 1 юзер
         sql = "SELECT * FROM Users WHERE "
         sql, parameters = self.format_args(sql, parameters=kwargs)
         return await self.execute(sql, *parameters, fetchrow=True)
+
+    async def update_duel_user2(self, user2, id):
+        sql = f"""
+            UPDATE DUEL SET user2=$1 WHERE id=$2
+            """
+        return await self.execute(sql, user2, id, execute=True)
+
+    async def update_user_id_website(self, id_website, id):
+        sql = f"""
+            UPDATE USERS SET id_website=$1 WHERE id=$2
+        """
+        return await self.execute(sql, id_website, id, execute=True)

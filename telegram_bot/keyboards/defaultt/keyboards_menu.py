@@ -1,8 +1,8 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
 def start():
-    keyboard = ReplyKeyboardMarkup(row_width=2)
-    keyboard.add(KeyboardButton(text=f"❔ Тестирование"),
+    keyboard = ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
+    keyboard.add(KeyboardButton(text=f"💡 Тестирование"),
                  KeyboardButton(text=f"⚔️ Бросить вызов"))
     keyboard.add(KeyboardButton(text=f"🔥 Рейтинг"),
         KeyboardButton(text=f"👤 Профиль"))
