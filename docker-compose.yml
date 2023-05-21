@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  django:
+    build: ./backend
+    restart: always
+    ports:
+      - 8000:8000
+    command: sh -c 'python manage.py runserver 0.0.0.0:8000'
+  
+  node:
+    build: ./react
+    restart: always
+    ports:
+      - 3000:3000
+    command: npm start
+    depends_on:
+      - django
+  
+  bot: 
+    build: ./telegram_bot
+    restart: always
+    command: python app.py
+    depends_on:
+      - django
+    

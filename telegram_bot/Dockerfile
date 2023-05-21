@@ -12,9 +12,7 @@ ENV YOUR_ENV=${YOUR_ENV} \
   POETRY_VERSION=1.4.1
 
 WORKDIR /bot
-COPY requrements.txt /bot/
+COPY requrements.txt /bot
 RUN pip install -r requrements.txt
 
-COPY . /code
-
-CMD [ "python", "app.py" ]
+COPY . /bot
