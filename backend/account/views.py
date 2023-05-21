@@ -38,5 +38,5 @@ class UserProfileChangeAPIView(generics.RetrieveAPIView,
 
 
 class UserRatingAPIList(generics.ListAPIView):
-    queryset = CustomUser.objects.order_by('expirience', )
+    queryset = CustomUser.objects.order_by('-expirience', )
     serializer_class = UsersRatingSerialazer

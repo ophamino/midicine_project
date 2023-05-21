@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import generics, viewsets, response
 
-from .models import Exam
-from .serialazers import ExamSerialazers
+from .models import Exam, Answer, Question
+from .serialazers import ExamSerialazers, Timeline, TotalExamSerialazers
 
 
 class QuizListAPIView(generics.ListAPIView):
@@ -18,3 +18,13 @@ class QuizAPIView(generics.RetrieveUpdateDestroyAPIView):
 class QuizCreateAPIView(generics.CreateAPIView):
     queryset = Exam.object.all()
     serializer_class = ExamSerialazers
+
+
+class ExamViewSet(viewsets.ViewSet):
+    def list(self, request, pk=None):
+        
+        tameline = Timeline(exam=Exam.objects.filter(pk=request.pk),
+                            questions=Question.objects.filter(pk=request.pk),
+                            answer=Answer.objects.filter(pk=request.pk))
+        serialazer = TotalExamSerialazers(tameline)
+        return response.Response(serialazer.data)

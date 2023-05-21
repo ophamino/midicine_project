@@ -7,7 +7,6 @@ class ExamAdmin(admin.ModelAdmin):
     list_display = ['title', 'date_created', 'date_updated', 'status']
     list_filter = ['status', 'date_created']
     search_fields = ['title', 'discription']
-    prepopulated_fields = {'slug': ('title', )}
     date_hierarchy = 'date_created'
     ordering = ['status', 'date_created']
 

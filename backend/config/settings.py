@@ -28,6 +28,7 @@ INSTALLED_APPS = [
 
     'account.apps.AccountConfig',
     'quiz.apps.QuizConfig',
+    'article.apps.ArticleConfig',
 ]
 
 MIDDLEWARE = [
