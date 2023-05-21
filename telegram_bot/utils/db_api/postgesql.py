@@ -53,8 +53,8 @@ class Database:
         sql = """
                 CREATE TABLE IF NOT EXISTS DUEL(
                     id INT NOT NULL UNIQUE,
-                    user1 INT,
-                    user2 INT,
+                    user1 BIGINT,
+                    user2 BIGINT,
                     quantity_answers_user1 INT,
                     quantity_answers_user2 INT,
                     id_quizy INT
@@ -100,9 +100,6 @@ class Database:
         sql = "SELECT * FROM Duel WHERE user1 IS NOT NULL"
         return await self.execute(sql, fetch=True)
 
-    async def select_all_duel_searh_user(self):  # количество пользователей
-        sql = "SELECT COUNT(*) FROM Users WHERE id_session_duel==1"
-        return await self.execute(sql, fetchval=True)
 
     async def update_duel_user2(self, user2, id):
         sql = f"""
@@ -121,3 +118,7 @@ class Database:
             UPDATE USERS SET id_session_duel=$1 WHERE id=$2
         """
         return await self.execute(sql, id_session_duel, id, execute=True)
+
+    async def count_user_ojidanie_duel(self, id):  # количество пользователей
+        sql = "SELECT COUNT(*) FROM Users WHERE id=$1 AND id_session_duel IS NOT NULL"
+        return await self.execute(sql, id, fetchval=True)

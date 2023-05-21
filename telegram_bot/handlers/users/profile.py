@@ -1,5 +1,6 @@
 from aiogram import types
 
+from data.config import website
 from loader import dp, db
 import requests
 
@@ -8,7 +9,7 @@ import requests
 async def profile_func(message: types.Message):
     data_user = await db.select_user(id=message.from_user.id)
 
-    BASE_URL = 'http://127.0.0.1:8000/api/v1/account'
+    BASE_URL = f'http://{website}/api/v1/account'
     response = requests.get(f"{BASE_URL}/user/update/3")
     data_user_api = response.json()
     print(data_user_api)

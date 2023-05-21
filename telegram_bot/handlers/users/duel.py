@@ -3,17 +3,19 @@ import random
 import requests
 from aiogram import types
 
+from data.config import website
 from loader import dp, db
 
 
 @dp.message_handler(text='⚔️ Бросить вызов')
 async def duel_func(message: types.Message):
     # тащим тесты
-    BASE_URL = 'http://127.0.0.1:8000/api/v1/exams/list'
+    BASE_URL = f'http://{website}/api/v1/exams/list'
     response = requests.get(f"{BASE_URL}")
     all_quizy = response.json()
+    print(await db.count_user_ojidanie_duel(id=message.from_user.id))
 
-    if await db.select_all_duel_searh_user() == 1:
+    if await db.count_user_ojidanie_duel(id=message.from_user.id) == 1:
         await message.answer("Вы уже в очереди")
     else:
         all_duel = await db.select_all_duel()
@@ -30,8 +32,11 @@ async def duel_func(message: types.Message):
                 await db.update_user_id_session(id_session_duel=id_session, id=message.from_user.id)  # привязали дуэль к юзеру
                 await message.answer("Поиск соперника 🔍")
             else:
-
                 await message.answer("Соперник найден!")
+                data_user = await db.select_user(id=message.from_user.id)
+                id_session = data_user['id_session_duel']
+                data_duel = await db.select_duel(id=id_session)
+                await dp.bot.send_message(chat_id=data_duel['user1'], text='соперник найден!')
                 await db.update_duel_user2(user2=message.from_user.id, id=duel_start[0]['id'])
                 await db.update_user_id_session(id_session_duel=duel_start[0]['id'],
                                                 id=message.from_user.id)  # привязали дуэль к юзеру

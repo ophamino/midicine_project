@@ -2,6 +2,7 @@
 import requests
 from aiogram import types
 
+from data.config import website
 from keyboards.inline.user_inline import url_website
 from loader import dp, db
 
@@ -10,7 +11,7 @@ from loader import dp, db
 async def rating_func(message: types.Message):
     data_user = await db.select_user(id=message.from_user.id)
 
-    BASE_URL = 'http://127.0.0.1:8000/api/v1/account/rating'
+    BASE_URL = f'http://{website}/api/v1/account/rating'
     response = requests.get(f"{BASE_URL}")
     users = response.json()
 
