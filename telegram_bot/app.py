@@ -13,6 +13,7 @@ async def on_startup(dp):
     middlewares.setup(dp)
     await db.create()  # создаем подключение к базе данных
     await db.create_table_users()  # создаем таблицу пользователей
+    await db.create_table_duel()  # создаем таблицу дуэлей
     # print(await db.select_all_users())
     await on_startup_notify(dp)
 

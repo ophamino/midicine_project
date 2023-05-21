@@ -1,5 +1,6 @@
 from aiogram import types
 
+from keyboards.inline.user_inline import about_inline
 from loader import dp
 
 
@@ -10,4 +11,4 @@ async def about_func(message: types.Message):
                          "<b>• Что умеет эта платформа?:</b>\n"
                          "- Более 100+ тестов и ежедневных заданий!\n"
                          "- Поднимайся в топе, зарабатывая опыт!\n"
-                         "- Бросай вызов другим специалистам в своей области!\n")
+                         "- Бросай вызов другим специалистам в своей области!\n", reply_markup=about_inline())

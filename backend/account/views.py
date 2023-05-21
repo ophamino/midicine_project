@@ -20,8 +20,8 @@ class UserProfileChangeAPIView(generics.RetrieveAPIView,
                                mixins.UpdateModelMixin):
     queryset = CustomUser.objects.all()
     permission_classes = (
-        permissions.IsAuthenticated,
-        UserIsOwnerOrReadOnly,
+        # permissions.IsAuthenticated,
+        # UserIsOwnerOrReadOnly,
     )
     serializer_class = UserProfileChangeSerializer
 

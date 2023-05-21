@@ -13,3 +13,5 @@ DB_HOST = 'localhost'  # 127.0.0.1 на сервере нужно прописа
 BOT_TOKEN = str(os.getenv("BOT_TOKEN"))
 
 admins = [1881571115]
+
+website = '127.0.0.1:8000'
