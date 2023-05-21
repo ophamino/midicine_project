@@ -18,7 +18,7 @@ class Exam(models.Model):
         PUBLISHED = 'PB', 'Published'
 
     title = models.CharField(max_length=255)
-    photo = models.ImageField(upload_to='exam_photo', null=True)
+    photo = models.ImageField(upload_to='exam_photo', null=True, blank=True)
     discription = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
