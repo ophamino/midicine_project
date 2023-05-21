@@ -5,5 +5,5 @@ from .views import ArticleRetrieveUpdateDestroyAPIView, ArticleListAPIView, Comm
 urlpatterns = [
     path('', ArticleListAPIView.as_view()),
     path('dataeil/', ArticleRetrieveUpdateDestroyAPIView.as_view()),
-    path('comments/', CommentAPIViewSet.as_view()) 
+    path('comments/', CommentAPIViewSet.as_view({'get': 'list'})) 
 ]

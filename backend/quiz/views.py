@@ -27,3 +27,5 @@ class AnswerListAPIView(viewsets.ViewSet):
 class ExamListAPIView(generics.ListAPIView):
     queryset = Exam.objects.all()
     serializer_class = ExamListAPIViewSerializer
+
+
