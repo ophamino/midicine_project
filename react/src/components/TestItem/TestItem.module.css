@@ -1,0 +1,42 @@
+.testItem {
+  background-color: #fff;
+  max-width: 418px;
+  padding: 22px;
+}
+
+.testItem__privie_img {
+  width: 100%;
+}
+
+.testItem__text_count_question {
+  text-align: right;
+  font-weight: 700;
+  font-size: 19.2px;
+  line-height: 22px;
+  color: #000000;
+}
+
+.testItem_text_specialization {
+  font-weight: 500;
+  font-size: 21.6px;
+  line-height: 25px;
+  color: #000000;
+}
+
+.testItem_text_description {
+  font-weight: 400;
+  font-size: 19.2px;
+  line-height: 22px;
+  color: #a4a4a4;
+}
+
+.testItem__active_btns {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 21px;
+}
+
+.testItem__active_btns_saved,
+.testItem__active_btns_saved {
+  border: none;
+}

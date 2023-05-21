@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './TestScreen.module.css';
+import TestItem from '../../../components/TestItem/TestItem';
 
 const TestScreen = () => {
   return (
@@ -18,7 +19,9 @@ const TestScreen = () => {
         </p>
       </div>
 
-      <div className={style.testScreen__slader}></div>
+      <div className={style.testScreen__slader}>
+        <TestItem />
+      </div>
     </div>
   );
 };

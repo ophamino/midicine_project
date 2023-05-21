@@ -68,7 +68,7 @@ const Header = () => {
       </nav>
       <div className={style.auth}>
         {auth ? (
-          <Link className={style.auth_btn_auth} to={'/Main'}>
+          <Link className={style.auth_btn_auth} to={'/profile'}>
             {firstName}
           </Link>
         ) : (

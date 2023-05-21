@@ -1,0 +1,67 @@
+.testBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.test__header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.test__header_logo {
+  display: flex;
+  column-gap: 12px;
+  align-items: center;
+}
+.test__header_img {
+  width: 41px;
+}
+.test__header_text {
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 41px;
+
+  color: #000000;
+}
+
+.test_search {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.test__search_input {
+  outline: none;
+  max-width: 622px;
+  width: 100%;
+  height: 64px;
+  background: #ffffff;
+  border-radius: 15px;
+  border: none;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  padding-left: 64px;
+}
+
+.test__header_btn {
+  display: flex;
+  width: 220px;
+  height: 60px;
+  border-radius: 30px;
+  background-color: transparent;
+  border: 3px solid #000;
+  font-size: 24px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  transition: 0.5s;
+}
+
+.test__header_btn:hover {
+  background-color: #000;
+  color: #fff;
+}

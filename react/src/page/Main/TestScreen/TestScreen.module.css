@@ -2,6 +2,7 @@
   padding: 54px 0 48px 0;
   margin: 0 106px 234px 145px;
   display: flex;
+  justify-content: space-between;
 }
 
 .testScreen__info {

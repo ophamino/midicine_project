@@ -6,6 +6,7 @@
 }
 body {
   font-family: 'Ubuntu', sans-serif;
+  background-color: #f3f5f9;
 }
 .container {
   max-width: 1440px;

@@ -4,7 +4,7 @@ import style from './Footer.module.css';
 const Footer = () => {
   return (
     <div className={style.footer}>
-      <hr />
+      <hr className={style.footer__hr} />
       <div className={style.footer__menu}>
         <div className={style.footer__menu_logo}>MedSkillz</div>
         <ul className={style.footer__menu_list}>

@@ -1,0 +1,33 @@
+.articles {
+  display: flex;
+  margin: 50px 106px 248px 145px;
+  padding: 54px 0 41px 0;
+
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.articles__info {
+  max-width: 487px;
+}
+
+.arcticles__info_header {
+  text-align: right;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 80px;
+  text-align: right;
+  color: #000000;
+  margin-bottom: 30px;
+}
+
+.arcticles__info_subtitle {
+  text-align: right;
+
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: right;
+
+  color: #40434a;
+}

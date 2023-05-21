@@ -1,0 +1,8 @@
+.profile {
+  background-color: #f3f5f9;
+}
+
+.profileBlock {
+  display: flex;
+  justify-content: space-between;
+}

@@ -3,6 +3,7 @@
   margin: 0 106px 124px 145px;
   display: flex;
   justify-content: space-between;
+  flex-direction: row-reverse;
 }
 
 .aboutUs__info {
@@ -10,6 +11,7 @@
 }
 
 .aboutUs__info_header {
+  text-align: right;
   font-weight: 700;
   font-size: 64px;
   line-height: 80px;
@@ -17,6 +19,8 @@
   margin-bottom: 37px;
 }
 .aboutUs__info_subtitle {
+  text-align: right;
+
   max-width: 453px;
   font-weight: 400;
   font-size: 24px;

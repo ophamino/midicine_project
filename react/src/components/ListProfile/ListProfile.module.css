@@ -1,0 +1,24 @@
+.listProfile {
+  max-width: 470px;
+  background-color: #fff;
+  border-radius: 50px;
+}
+
+.listProfile__list {
+  margin: 0 auto;
+}
+
+.listProfile__list hr {
+  width: 411px;
+  margin: 0 auto;
+}
+.listProfile__list_item {
+  display: flex;
+  align-items: center;
+  column-gap: 40px;
+  padding: 36px 152px 36px 56px;
+}
+
+.listProfile__list_item_link {
+  color: #000;
+}
