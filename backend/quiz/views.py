@@ -1,30 +1,25 @@
 from django.shortcuts import render
-from rest_framework import generics, viewsets, response
-
+from .serialazers import QuestionListAPIViewSerializer, AnwerListAPIViewSerialazer, ExamListAPIViewSerializer
+from rest_framework import generics
+from rest_framework import viewsets, response
 from .models import Exam, Answer, Question
-from .serialazers import ExamSerialazers, Timeline, TotalExamSerialazers
 
 
-class QuizListAPIView(generics.ListAPIView):
-    queryset = Exam.published.all()
-    serializer_class = ExamSerialazers
+class ExamListAPIView(viewsets.ViewSet):    
+    def list(self, request, pk):
+        queryset = Exam.objects.filter(pk=pk)
+        serializer = ExamListAPIViewSerializer(queryset, many=True)
+        return response.Response(serializer.data)
 
 
-class QuizAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Exam.published.all()
-    serializer_class = ExamSerialazers
+class QuestionListAPIView(viewsets.ViewSet):    
+    def list(self, request, pk):
+        queryset = Question.objects.filter(exam=pk)
+        serializer = QuestionListAPIViewSerializer(queryset, many=True)
+        return response.Response(serializer.data)
 
-    
-class QuizCreateAPIView(generics.CreateAPIView):
-    queryset = Exam.object.all()
-    serializer_class = ExamSerialazers
-
-
-class ExamViewSet(viewsets.ViewSet):
-    def list(self, request, pk=None):
-        
-        tameline = Timeline(exam=Exam.objects.filter(pk=request.pk),
-                            questions=Question.objects.filter(pk=request.pk),
-                            answer=Answer.objects.filter(pk=request.pk))
-        serialazer = TotalExamSerialazers(tameline)
-        return response.Response(serialazer.data)
+class AnswerListAPIView(viewsets.ViewSet):    
+    def list(self, request, pk):
+        queryset = Answer.objects.filter(question=pk)
+        serializer = AnwerListAPIViewSerialazer(queryset, many=True)
+        return response.Response(serializer.data)
