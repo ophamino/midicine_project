@@ -3,12 +3,9 @@ import style from './TestItem.module.css';
 import played from '../../assets/icon/played.svg';
 import saved from '../../assets/icon/saved.svg';
 import test_l from '../../assets/test_l.jpg';
+import { Link } from 'react-router-dom';
 
-const TestItem = ({
-  countQuestions,
-  nameSpecialization,
-  questionsDescription,
-}) => {
+const TestItem = ({ nameSpecialization, questionsDescription, testId }) => {
   return (
     <div className={style.testItem}>
       <div className={style.testItem__previe}>
@@ -16,9 +13,6 @@ const TestItem = ({
       </div>
 
       <div className={style.testItem__text}>
-        <p className={style.testItem__text_count_question}>
-          {countQuestions} вопросов
-        </p>
         <p className={style.testItem_text_specialization}>
           {nameSpecialization}
         </p>
@@ -31,9 +25,12 @@ const TestItem = ({
         <button className={style.testItem__active_btns_saved}>
           <img src={saved} alt="saved" />
         </button>
-        <button className={style.testItem__active_btns_saved}>
+        <Link
+          to={`/quiz/${testId}`}
+          className={style.testItem__active_btns_saved}
+        >
           <img src={played} alt="played" />
-        </button>
+        </Link>
       </div>
     </div>
   );

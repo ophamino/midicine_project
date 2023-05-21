@@ -7,6 +7,7 @@ import Profile from './page/Profile/Profile';
 import Test from './page/Test/Test';
 import Quiz from './components/Quiz/Quiz';
 import QuizCreator from './components/QuizCreator/QuizCreator';
+import Telegram from './page/Telegram/Telegram';
 
 function App() {
   return (
@@ -21,9 +22,11 @@ function App() {
 
           <Route path="/test" element={<Test />} />
 
-          <Route path="/quiz" element={<Quiz />} />
+          <Route path="/quiz/:id" element={<Quiz />} />
 
           <Route path="/qcreator" element={<QuizCreator />} />
+
+          <Route path="/authtg" element={<Telegram />} />
         </Routes>
       </div>
     </BrowserRouter>

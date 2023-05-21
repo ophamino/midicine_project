@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './FirstScreen.module.css';
 import light from '../../../assets/firstScreen/light.svg';
-import medical_employee from '../../../assets/firstScreen/medical_employee.jpg';
+import medical_employee from '../../../assets/firstScreen/medical_employee.png';
 
 const FirstScreen = () => {
   return (

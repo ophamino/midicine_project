@@ -1,0 +1,71 @@
+.aboutMe {
+  max-width: 788px;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 65px;
+}
+
+.aboutMe_backToMain_btn {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.aboutMe__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutMe_backToMain_btn {
+  margin-bottom: 42px;
+}
+
+.aboutMe__info_lastName_data,
+.aboutMe__info_firstName_data,
+.aboutMe__info_phone_data,
+.aboutMe__info_email_data {
+  padding: 25px 31px;
+  background: rgba(132, 188, 213, 0.12);
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+.aboutMe__info_lastName_placeholder,
+.aboutMe__info_firstName_placeholder,
+.aboutMe__info_phone_placeholder,
+.aboutMe__info_email_placeholder,
+.aboutMe__info_validPassword_placeholder,
+.aboutMe__info_newPassword_placeholder,
+.aboutMe__info_newPasswordVerify_placeholder {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  margin-top: 10px;
+
+  color: #666666;
+}
+
+.aboutMe__info_validPassword_data,
+.aboutMe__info_newPassword_data,
+.aboutMe__info_newPasswordVerify_data {
+  margin-top: 10px;
+
+  width: 95%;
+  padding: 20px;
+  border-radius: 15px;
+  font-size: 24px;
+  border: 2px solid rgba(132, 188, 213, 0.12);
+}
+
+.aboutMe__info_btn {
+  margin-top: 10px;
+  padding: 15px;
+  font-size: 24px;
+  border-radius: 10px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  background-color: #0f9a13;
+}

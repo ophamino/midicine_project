@@ -1,7 +1,64 @@
 import React, { useState } from 'react';
-import './Quiz.css';
+import { useParams } from 'react-router-dom';
 
+import './Quiz.css';
+import axios from 'axios';
+import { URL_API_EXAM, URL_API_EXAM_A, URL_API_EXAM_Q } from '../../urls';
 const Quiz = () => {
+  const { id } = useParams();
+
+  React.useEffect(() => {
+    const getQuize = async () => {
+      const tokenString = sessionStorage.getItem('token');
+
+      const response = await axios
+        .get(URL_API_EXAM + id + '/', {
+          headers: {
+            Authorization: 'Token ' + JSON.parse(tokenString),
+          },
+        })
+        .then((data) => {
+          setExam(data.data[0]);
+          console.log(data.data[0]);
+        });
+    };
+    const getQuestions = async () => {
+      const tokenString = sessionStorage.getItem('token');
+
+      const response = await axios
+        .get(URL_API_EXAM_Q + id + '/', {
+          headers: {
+            Authorization: 'Token ' + JSON.parse(tokenString),
+          },
+        })
+        .then((data) => {
+          setQuestion(data.data[0]);
+          console.log(data.data[0]);
+        });
+    };
+    const getAnswer = async () => {
+      const tokenString = sessionStorage.getItem('token');
+
+      const response = await axios
+        .get(URL_API_EXAM_A + id + '/', {
+          headers: {
+            Authorization: 'Token ' + JSON.parse(tokenString),
+          },
+        })
+        .then((data) => {
+          setAnswer(data.data[0]);
+          console.log(data.data[0]);
+        });
+    };
+    getQuize();
+    getQuestions();
+    getAnswer();
+  }, []);
+
+  const [exam, setExam] = useState([]);
+  const [question, setQuestion] = useState([]);
+  const [answer, setAnswer] = useState([]);
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
@@ -43,20 +100,21 @@ const Quiz = () => {
 
   return (
     <div className="quiz-container">
-      <h2 className="quiz-title">Quiz - Test Your Knowledge</h2>
+      <h2 className="quiz-title">{exam.title}</h2>
       {showScore ? (
         <div className="quiz-score">
-          <h3>Your Score: {score}</h3>
+          <h3>Правильно ответили на : {score} вопроса</h3>
           <button
             className="quiz-restart-btn"
             onClick={() => setShowScore(false)}
           >
-            Restart Quiz
+            Перезагрузить Тест
           </button>
         </div>
       ) : (
         <div className="quiz-question">
-          <h3>Question {currentQuestion + 1}</h3>
+          <h3>Вопрос {currentQuestion + 1}</h3>
+          <h4>Описание: {exam.discription}</h4>
           <p className="quiz-question-text">
             {questions[currentQuestion].question}
           </p>
@@ -76,7 +134,7 @@ const Quiz = () => {
             className="quiz-next-btn"
             onClick={() => handleAnswerOptionClick()}
           >
-            Next
+            Далее
           </button>
           <progress
             className="quiz-progress"

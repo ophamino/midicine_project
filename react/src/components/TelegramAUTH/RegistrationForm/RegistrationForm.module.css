@@ -1,0 +1,75 @@
+.registrationForm {
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+}
+
+.registrationForm__form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.registrationForm__form_lastName,
+.registrationForm__form_firstName,
+.registrationForm__form_phone,
+.registrationForm__form_email,
+.registrationForm__form_password {
+  max-width: 300px;
+  padding: 8px 16px;
+  border-radius: 7px;
+  background: rgba(132, 188, 213, 0.12);
+  display: flex;
+  flex-direction: column;
+}
+
+.registrationForm__form_lastName input,
+.registrationForm__form_firstName input,
+.registrationForm__form_phone input,
+.registrationForm__form_email input,
+.registrationForm__form_password input {
+  width: 200px;
+  font-size: 10px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.registrationForm__form_lastName input:focus,
+.registrationForm__form_firstName input:focus,
+.registrationForm__form_phone input:focus,
+.registrationForm__form_email input:focus,
+.registrationForm__form_password input:focus {
+  border: none;
+}
+.registrationForm__form_lastName_placeholder,
+.registrationForm__form_firstName_placeholder,
+.registrationForm__form_phone_placeholder,
+.registrationForm__form_email_placeholder,
+.registrationForm__form_password_placeholder {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 11px;
+  margin-bottom: 8px;
+  color: rgba(64, 58, 75, 0.6);
+}
+
+.registrationForm__form_btn {
+  max-width: 273px;
+  border: none;
+  height: 40px;
+  background: #85adff;
+  border-radius: 7px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+  cursor: pointer;
+}

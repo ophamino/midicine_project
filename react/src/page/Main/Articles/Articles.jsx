@@ -6,7 +6,10 @@ const Articles = () => {
   return (
     <div className={style.articles}>
       <div className={style.article__item}>
-        <ArticlePreview title="ТЕст" subtitle="Ntnc" />
+        <ArticlePreview
+          title="COVID-19"
+          subtitle="Аспергиллез головного мозга"
+        />
       </div>
       <div className={style.articles__info}>
         <h1 className={style.arcticles__info_header}>Статьи</h1>

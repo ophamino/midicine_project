@@ -70,22 +70,32 @@ const AboutMe = () => {
           <p className={style.aboutMe__info_validPassword_placeholder}>
             Введите старый пароль
           </p>
-          <input className={style.aboutMe__info_validPassword_data} />
+          <input
+            className={style.aboutMe__info_validPassword_data}
+            type="password"
+          />
         </div>
 
         <div className={style.aboutMe__info_newPassword}>
           <p className={style.aboutMe__info_newPassword_placeholder}>
             Введите новый пароль
           </p>
-          <input className={style.aboutMe__info_newPassword_data} />
+          <input
+            className={style.aboutMe__info_newPassword_data}
+            type="password"
+          />
         </div>
 
         <div className={style.aboutMe__info_newPasswordVerify}>
           <p className={style.aboutMe__info_newPasswordVerify_placeholder}>
             Подтвердите новый пароль
           </p>
-          <input className={style.aboutMe__info_newPasswordVerify_data} />
+          <input
+            className={style.aboutMe__info_newPasswordVerify_data}
+            type="password"
+          />
         </div>
+        <button className={style.aboutMe__info_btn}>Поменять пароль</button>
       </div>
     </div>
   );
