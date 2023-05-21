@@ -48,6 +48,18 @@ class Database:
         """  # IF NOT EXISTS - позволяет избежать ошибки если таблица создана
         await self.execute(sql, execute=True)
 
+    async def create_table_duel(self):
+        sql = """
+                CREATE TABLE IF NOT EXISTS USERS(
+                    user1 INT,
+                    user2 INT,
+                    quantity_answers_user1 INT,
+                    quantity_answers_user2 INT,
+                    id_quizy INT
+                    );
+        """  # IF NOT EXISTS - позволяет избежать ошибки если таблица создана
+        await self.execute(sql, execute=True)
+
     @staticmethod
     def format_args(sql, parameters: dict):
         sql += " AND ".join([
@@ -60,8 +72,16 @@ class Database:
         sql = "INSERT INTO users (id, id_website) VALUES($1, $2) returning *"
         return await self.execute(sql, id, id_website, fetchrow=True)
 
+    async def add_duel(self, user1, user2, quantity_answers_user1, quantity_answers_user2, id_quizy):  # добавляем пользователя
+        sql = "INSERT INTO duel (user1, user2, quantity_answers_user1, quantity_answers_user2, id_quizy) VALUES($1, $2, $3, $4, $5) returning *"
+        return await self.execute(sql, user1, user2, quantity_answers_user1, quantity_answers_user2, id_quizy, fetchrow=True)
+
     async def select_all_users(self):  # все юзеры
         sql = "SELECT * FROM Users"
+        return await self.execute(sql, fetch=True)
+
+    async def select_all_duel(self):  # все юзеры
+        sql = "SELECT * FROM duel"
         return await self.execute(sql, fetch=True)
 
     async def select_user(self, **kwargs):  # 1 юзер

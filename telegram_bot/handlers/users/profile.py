@@ -1,13 +1,15 @@
 from aiogram import types
 
-from loader import dp
+from loader import dp, db
 import requests
 
 
 @dp.message_handler(text='👤 Профиль')
 async def profile_func(message: types.Message):
+    data_user = await db.select_user(id=message.from_user.id)
+
     BASE_URL = 'http://127.0.0.1:8000/api/v1/account'
-    response = requests.get(f"{BASE_URL}/user/update/1")
+    response = requests.get(f"{BASE_URL}/user/update/{data_user['id_website']}")
     data_user_api = response.json()
     await message.answer("Ваш профиль:\n\n"
                          f"Имя: {data_user_api['first_name']}\n"
