@@ -12,10 +12,10 @@ class ExamListAPIViewSerializer(serializers.ModelSerializer):
 class QuestionListAPIViewSerializer(serializers.Serializer):
     class Meta:
         model = Question
-        fields = ['title']
+        fields = ['exam', 'title']
 
 
 class AnwerListAPIViewSerialazer(serializers.ModelSerializer):
     class Meta:
         model = Answer
-        fields = ['title', 'status']
+        fields = ['question', 'title', 'status']
