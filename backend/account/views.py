@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import generics, permissions, mixins
 
 from .permissions import UserIsOwnerOrReadOnly
-from .serialazers import UsersSerialazer, UserProfileChangeSerializer
+from .serialazers import UsersSerialazer, UserProfileChangeSerializer, UsersRatingSerialazer
 from .models import CustomUser
 
 User = get_user_model()
@@ -18,6 +18,7 @@ class UserAPIListView(generics.ListAPIView):
 class UserProfileChangeAPIView(generics.RetrieveAPIView,
                                mixins.DestroyModelMixin,
                                mixins.UpdateModelMixin):
+    queryset = CustomUser.objects.all()
     permission_classes = (
         permissions.IsAuthenticated,
         UserIsOwnerOrReadOnly,
@@ -25,8 +26,8 @@ class UserProfileChangeAPIView(generics.RetrieveAPIView,
     serializer_class = UserProfileChangeSerializer
 
     def get_object(self):
-        user_id = self.kwargs["id"]
-        obj = get_object_or_404(User, id=user_id)
+        user_pk = self.kwargs["pk"]
+        obj = get_object_or_404(User, pk=user_pk)
         return obj
 
     def delete(self, request, *args, **kwargs):
@@ -34,3 +35,8 @@ class UserProfileChangeAPIView(generics.RetrieveAPIView,
 
     def put(self, request, *args, **kwargs):
         return self.update(request, *args, **kwargs)
+
+
+class UserRatingAPIList(generics.ListAPIView):
+    queryset = CustomUser.objects.order_by('-expirience', )
+    serializer_class = UsersRatingSerialazer
